@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--日志级别：TRACE < DEBUG < INFO < WARN < ERROR < FATAL,如果设置为WARN，则低于WARN的信息都不会输出-->
+<!--
+    status : 这个用于设置log4j2自身内部的信息输出,可以不设置,当设置成trace时,会看到log4j2内部各种详细输出
+    monitorInterval : Log4j能够自动检测修改配置文件和重新配置本身, 设置间隔秒数。此处表示每隔300秒重读一次配置文件
+-->
+<Configuration status="ERROR" monitorInterval="300">
+
+    <!-- 定义下面的引用名 -->
+    <Properties> <!-- 配置日志文件输出目录，此配置将日志输出到tomcat根目录下的指定文件夹 -->
+        <Property name="LOG_HOME">${sys:catalina.home}/WebAppLogs/myblog
+        </Property>
+    </Properties>
+
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT"> <!-- 定义类型为Console的Appender -->
+            <!--控制台日志格式-->
+            <PatternLayout pattern="%d{HH:mm:ss} [%level] %c{10} - %msg%n"/> <!-- 定义类型为Pattern的Layout -->
+        </Console>
+
+        <!--Rolling的意思是当满足一定条件后，就重命名原日志文件用于备份，并从新生成一个新的日志文件。
+        例如需求是每天生成一个日志文件，但是如果一天内的日志文件体积已经超过1G，就从新生成，
+        两个条件满足一个即可。这在log4j 1.x原生功能中无法实现，在log4j2中就很简单了。-->
+        <!--
+        RollingRandomAccessFile的属性：
+            fileName  指定当前日志文件的位置和文件名称
+            filePattern  指定当发生Rolling时，文件的转移和重命名规则
+            SizeBasedTriggeringPolicy  指定当文件体积大于size指定的值时，触发Rolling
+            DefaultRolloverStrategy  指定最多保存的文件个数
+        -->
+        <RollingFile name="info_appender" immediateFlush="true"
+                     fileName="${LOG_HOME}/info.log"
+                     filePattern="${LOG_HOME}/info/info - %d{yyyy-MM-dd}.log">
+            <!--个人理解 filePattern ： 注意filePatter的变化 如果匹配的值发生了变化 就会重新创建一个文件-->
+            <PatternLayout>
+                <!--文件日志格式-->
+                <pattern>%5p [%t] %d{yyyy-MM-dd HH:mm:ss} (%F:%L) %m%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <!--按filePatter匹配 创建-->
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <!--按大小 创建-->
+                <!--<SizeBasedTriggeringPolicy size="2MB"/>-->
+            </Policies>
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT"
+                                 onMismatch="DENY"/>
+            </Filters>
+        </RollingFile>
+    </Appenders>
+    <!--定义logger，只有定义了logger并引入上面的appender，appender才会生效-->
+    <Loggers>
+        <Root level="info"> <!-- 定义Root Logger -->
+            <AppenderRef ref="Console"/> <!-- Root Logger的Appender引用上面定义的Console -->
+            <AppenderRef ref="info_appender"/> <!--必须要加 不然不会生成文件-->
+        </Root>
+        <!--定义名字为MainLogger的Logger，其日志级别为info，info以下级别的信息将不会输出 -->
+        <Logger name="MainLogger" level="info" additivity="false">
+            <AppenderRef ref="Console"/> <!-- Root Logger的Appender引用上面定义的Console -->
+        </Logger>
+
+    </Loggers>
+
+
+</Configuration>
