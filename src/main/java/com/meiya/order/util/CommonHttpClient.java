@@ -1,4 +1,4 @@
-package com.cjl.web.util;
+package com.meiya.order.util;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

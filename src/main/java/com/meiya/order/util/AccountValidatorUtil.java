@@ -1,6 +1,4 @@
-package com.cjl.web.util;
-
-import java.util.regex.Pattern;
+package com.meiya.order.util;
 
 /**
  * @创建人: Mr Chen

@@ -26,10 +26,10 @@ public class TestExcetion {
 
     @Test
     public void test2() {
-        List<Integer> list = new ArrayList<>();
-        list.forEach(item -> {
-            System.out.println(item);
-        });
+//        List<Integer> list = new ArrayList<>();
+//        list.forEach(item -> {
+//            System.out.println(item);
+//        });
 
     }
 }

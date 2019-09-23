@@ -1,4 +1,4 @@
-package com.cjl.web.util;
+package com.meiya.order.util;
 
 import net.sf.json.JSONObject;
 import org.apache.http.NameValuePair;

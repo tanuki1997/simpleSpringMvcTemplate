@@ -1,10 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="springMVC:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/springMVC_war_exploded</output-path>
+  <artifact type="exploded-war" name="meiya_order:war exploded">
+    <output-path>$PROJECT_DIR$/target/orderManage-0.0.1-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>meiya_order</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="springMVC" />
+          <element id="module-output" name="meiya_order" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.7.RELEASE" />
@@ -17,11 +24,10 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.1.5.RELEASE" />
-          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.3" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis-spring:1.2.2" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.2.RELEASE" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-all:1.2.2" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-guice:1.2.2" />
-          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.2.2" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-all:1.2.3" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-guice:1.2.3" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:r09" />
           <element id="library" level="project" name="Maven: com.google.inject:guice:3.0" />
           <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
@@ -43,9 +49,26 @@
           <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.7.0" />
           <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2" />
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
+          <element id="library" level="project" name="Maven: com.alibaba:druid:1.1.12" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.18" />
+          <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.2.7" />
+          <element id="library" level="project" name="Maven: org.mybatis.generator:mybatis-generator-core:1.3.5" />
+          <element id="library" level="project" name="Maven: tk.mybatis:mapper:3.3.9" />
+          <element id="library" level="project" name="Maven: javax.persistence:persistence-api:1.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.8" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.8" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.8" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjrt:1.9.2" />
+          <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.2" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-core:1.2.3" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-web:1.2.3" />
+          <element id="library" level="project" name="Maven: org.apache.shiro:shiro-spring:1.2.3" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="springMVC/web/Web" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/orderManage-0.0.1-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="meiya_order/web/Web" />
     </root>
   </artifact>
 </component>
